@@ -2,48 +2,67 @@
 //Complex Shape
 //Thursday Feb 19th 2026
 
-size(800,800);
-translate(400,400);
-background(#A6E9F5,100);
-fill(255);
+int compassX;
 
-strokeWeight(8);
+void setup() {
+  size(800, 800, P2D);
+  compassX =0;
+}
 
-//largest ring
-fill(0);
-circle(0,0,300);
-fill(255);
-circle(6,3,300);
+void draw() {
+  translate(400, 400);
+  background(#A6E9F5, 100);
+  fill(255);
+  compass(compassX, 400);
+  compassX = compassX+10;
+  if (compassX> 1100); {
+    compassX = -275;
+  }
+}
 
-//third ring
-fill(0);
-circle(0,0,200);
-fill(255);
-circle(6,3,200);
+void compass(int x, int y){
+  pushMatrix();
+  translate(x, y);
+  rotate(radians(45));
+  strokeWeight(8);
 
-//south needle
-fill(#BABABC);
-triangle(-20,0,0,200,20,0);
+  //largest ring
+  fill(0);
+  circle(0, 0, 300);
+  fill(255);
+  circle(6, 3, 300);
 
-//north needle
-fill(255,0,0);
-triangle(-20,0,0,-200,20,0);
+  //third ring
+  fill(0);
+  circle(0, 0, 200);
+  fill(255);
+  circle(6, 3, 200);
 
-//west needle
-noFill();
-triangle(0,-20,-200,0,0,20);
+  //south needle
+  fill(#BABABC);
+  triangle(-20, 0, 0, 200, 20, 0);
 
-//east needle
-triangle(0,-20,200,0,0,20);
+  //north needle
+  fill(255, 0, 0);
+  triangle(-20, 0, 0, -200, 20, 0);
 
-//second ring
-fill(0);
-circle(0,0,125);
-fill(255);
-circle(4,2,125);
+  //west needle
+  noFill();
+  triangle(0, -20, -200, 0, 0, 20);
 
-//last small ring
-fill(0);
-circle(0,0,65);
-fill(255);
-circle(4,2,65);
+  //east needle
+  triangle(0, -20, 200, 0, 0, 20);
+
+  //second ring
+  fill(0);
+  circle(0, 0, 125);
+  fill(255);
+  circle(4, 2, 125);
+
+  //last small ring
+  fill(0);
+  circle(0, 0, 65);
+  fill(255);
+  circle(4, 2, 65);
+  popMatrix();
+}
