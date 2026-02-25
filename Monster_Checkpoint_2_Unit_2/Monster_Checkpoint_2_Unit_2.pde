@@ -8,7 +8,8 @@ float vy;
 float x;
 float squish;
 float gravity;
-float counter;//currently not in use
+float counter;
+float angle;
 
 void setup() {
   pixelDensity(1);
@@ -20,6 +21,7 @@ void setup() {
   gravity = 1;
   squish = 1;
   counter = 0;
+  angle = 0;
 }
 
 void draw () {
@@ -27,8 +29,9 @@ void draw () {
   //Physics!
   vy = vy + gravity;//the velocity in the y direction will be limited by gravity and comes back down
   y = y + vy;// this is the factor propelling it up
-  counter = counter + 5; //I am planning to add eyes of some sort (not currently there yet)
-
+  counter = counter + 10; //I am planning to add eyes of some sort (not currently there yet)
+  angle = (millis()/100); 
+  
   int groundlevel = 300; //a variable for the place that the blob returns to or the ground.
 
   //lerp(start,finish, amount)
@@ -45,6 +48,8 @@ void draw () {
 
   // Draw Blob
   drawBlob(width / 2, y, squish);
+  drawBlob(width, y/3, squish/2);
+  drawBlob(width / 60, y/10, squish*1.5);
 }
 
 void drawBlob(float x, float y, float squish) { //defining my own function of drawing blob (slime blob)
@@ -54,7 +59,7 @@ void drawBlob(float x, float y, float squish) { //defining my own function of dr
   // Shadow on ground (grey that is constantly there at the "groundlevel" or the bottom)
   fill(100,160,80,80);
   noStroke();
-  ellipse(x,310,blobWidth * 0.9,14);
+  ellipse(x,y,blobWidth * 0.9,14);
 
   // Blob body
   fill(80,200,90); // a darker shade of green than the background
@@ -70,10 +75,14 @@ void drawBlob(float x, float y, float squish) { //defining my own function of dr
   //Red Scary Eyes
   fill(102,0,0,125); //bloody red (dark)
   ellipse(x - blobWidth * 0.20, y - blobHeight * 0.10, blobWidth * 0.25, blobHeight * 0.15); // left eye
-  if (counter > 50) {
+  if (counter > 90) {
     stroke(102,0,0);
     strokeWeight(10);
-    line(x - blobWidth * 0.20, y - blobHeight *0.10, blobWidth * 0.25, blobHeight * 0.15);
+    pushMatrix();
+    translate(x - blobWidth * 0.20 , y - blobHeight *0.10);
+    rotate(angle);
+    line(0,0, blobWidth, blobHeight);
+    popMatrix();
   }
   
   fill(102,0,0,200);
