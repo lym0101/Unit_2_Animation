@@ -48,8 +48,11 @@ void draw () {
 
   // Draw Blob
   drawBlob(width / 2, y, squish);
+  scale(0.95);
   drawBlob(width, y/3, squish/2);
+  scale(0.8);
   drawBlob(width / 60, y/10, squish*1.5);
+  scale(1);
 }
 
 void drawBlob(float x, float y, float squish) { //defining my own function of drawing blob (slime blob)
@@ -60,7 +63,7 @@ void drawBlob(float x, float y, float squish) { //defining my own function of dr
   fill(100,160,80,80);
   noStroke();
   ellipse(x,y,blobWidth * 0.9,14);
-
+  
   // Blob body
   fill(80,200,90); // a darker shade of green than the background
   ellipse(x,y,blobWidth,blobHeight);
@@ -99,3 +102,7 @@ void drawBlob(float x, float y, float squish) { //defining my own function of dr
 void mouseClicked() {// for it to go up and fall back down (might add a x direction if time allows)
   vy = -15; //goes upwards
 }
+
+  
+ 
+  
