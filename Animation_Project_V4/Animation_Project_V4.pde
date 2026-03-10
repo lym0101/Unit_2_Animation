@@ -33,7 +33,7 @@ void draw() {
     y = 0;
   }
   drawTube(500,200);
-  drawDigiPpl(200,200);  // Draw every frame, starting centered-ish and moving
+  drawDigiPpl(700,200);  // Draw every frame, starting centered-ish and moving
 }
 
 void drawBackground() {
@@ -52,15 +52,23 @@ void drawBackground() {
   
   beginShape();
   vertex(0,350);
-  vertex(60,260);
+  vertex(70,250);
   vertex(130,450);
-  vertex(76,607);
+  vertex(74,600);
   endShape(CLOSE);
+ 
   beginShape();
-  vertex(0,350);
-  vertex(60,260);
+  vertex(70,250);
   vertex(130,450);
-  vertex(76,607);
+  vertex(176,330);
+  vertex(135,170);
+  endShape(CLOSE);
+  
+  beginShape();
+  vertex(135,170);
+  vertex(175,330);
+  vertex(220,210);
+  vertex(190,90);
   endShape(CLOSE);
 }
 
