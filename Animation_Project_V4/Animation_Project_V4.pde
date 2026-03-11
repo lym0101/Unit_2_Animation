@@ -1,6 +1,8 @@
 //Eric Li
-//Animation Project 2 V2
+//Animation Project 2 V4
 //Mar 9th, 2026
+
+//Fear of Wide-Spread Data collection and the leakage of data randomly
 
 import processing.javafx.*;
 
@@ -8,7 +10,6 @@ import processing.javafx.*;
 int counter;
 float x;
 float y;
-float angle;
 
 void setup() {
   pixelDensity(1);
@@ -32,7 +33,7 @@ void draw() {
     x = 0;
     y = 0;
   }
-  drawTube(500,200);
+  drawTube(700,200);
   drawDigiPpl(700,200);  // Draw every frame, starting centered-ish and moving
 }
 
@@ -70,11 +71,79 @@ void drawBackground() {
   vertex(220,210);
   vertex(190,90);
   endShape(CLOSE);
+  
+  //window panes on the left
+  fill(0,1,1,100);
+  beginShape();
+  vertex(800,0);
+  vertex(350,0);
+  vertex(600,72);
+  endShape(CLOSE);
+  
+  beginShape();
+  vertex(350,0);
+  vertex(250,70);
+  vertex(450,130);
+  vertex(600,74);
+  endShape(CLOSE);
+ 
+  beginShape();
+  vertex(250,70);
+  vertex(450,130);
+  vertex(330,176);
+  vertex(170,135);
+  endShape(CLOSE);
+  
+  beginShape();
+  vertex(170,135);
+  vertex(330,175);
+  vertex(210,220);
+  vertex(90,190);
+  endShape(CLOSE);
+
+  //Data Centres on the left
+  drawDataCenter(40,580,140);
+  drawDataCenter(120,440,120);
+  drawDataCenter(170,340,100);
+  drawDataCenter(210,260,80);
+  drawDataCenter(240,200,65);
+
+
+  // Data Centres on the right
+  drawDataCenter(580,580,140);
+  drawDataCenter(540,440,120);
+  drawDataCenter(500,340,100);
+  drawDataCenter(470,260,80);
+  drawDataCenter(440,200,65);
+}
+
+void drawDataCenter(float x, float y, float s) { // s = size
+  // front side
+  fill(20);
+  rect(x,y,s,s);
+
+  // top side
+  fill(40);
+  beginShape();
+  vertex(x,y);
+  vertex(x+15,y-15);
+  vertex(x+s+15,y-15);
+  vertex(x+s,y);
+  endShape(CLOSE);
+
+  // side
+  fill(10);
+  beginShape();
+  vertex(x+s,y);
+  vertex(x+s+15,y-15);
+  vertex(x+s+15,y+s-15);
+  vertex(x+s,y+s);
+  endShape(CLOSE);
 }
 
 void drawDigiPpl(float x, float y) {
   pushMatrix();
-  translate(x,y);  // Now positions the head at (posX, posY)
+  translate(x,y);  // Now positions the head at (x, y)
   stroke(0);
   strokeWeight(3);
   
@@ -91,7 +160,10 @@ void drawDigiPpl(float x, float y) {
 
 //drawing tube
 void drawTube(float x, float y) {
-  stroke(0,100);
+  noStroke();
+  pushMatrix();
+  translate(x,y);
   rect(x,y,30,180,20);
   rect(x,y,180,30,20);
+  popMatrix();
 }
