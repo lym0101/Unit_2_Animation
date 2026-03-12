@@ -33,7 +33,7 @@ void draw() {
     x = 0;
     y = 0;
   }
-  drawTube(700,200);
+  drawTube(x,y);
   drawDigiPpl(700,200);  // Draw every frame, starting centered-ish and moving
 }
 
@@ -72,10 +72,17 @@ void drawBackground() {
   vertex(190,90);
   endShape(CLOSE);
   
-  //window panes on the left
+   beginShape();
+  vertex(175,330);
+  vertex(220,210);
+  vertex(190,90);
+  vertex(300,0);
+  endShape(CLOSE);
+  
+  //window panes on the right
   fill(0,1,1,100);
   beginShape();
-  vertex(800,0);
+  vertex(800,800);
   vertex(350,0);
   vertex(600,72);
   endShape(CLOSE);
@@ -95,26 +102,26 @@ void drawBackground() {
   endShape(CLOSE);
   
   beginShape();
-  vertex(170,135);
+  vertex(190,90);
   vertex(330,175);
   vertex(210,220);
   vertex(90,190);
   endShape(CLOSE);
 
   //Data Centres on the left
-  drawDataCenter(40,580,140);
-  drawDataCenter(120,440,120);
-  drawDataCenter(170,340,100);
-  drawDataCenter(210,260,80);
-  drawDataCenter(240,200,65);
+  drawDataCenter(20,580,140);
+  drawDataCenter(100,440,120);
+  drawDataCenter(150,310,100);
+  drawDataCenter(190,200,80);
+  drawDataCenter(230,120,65);
 
 
   // Data Centres on the right
-  drawDataCenter(580,580,140);
-  drawDataCenter(540,440,120);
-  drawDataCenter(500,340,100);
-  drawDataCenter(470,260,80);
-  drawDataCenter(440,200,65);
+  drawDataCenter(600,580,140);
+  drawDataCenter(560,440,120);
+  drawDataCenter(520,340,100);
+  drawDataCenter(490,260,80);
+  drawDataCenter(460,200,65);
 }
 
 void drawDataCenter(float x, float y, float s) { // s = size
