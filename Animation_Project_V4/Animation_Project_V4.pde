@@ -122,6 +122,8 @@ void drawBackground() {
   drawDataCenter(520,340,100);
   drawDataCenter(490,260,80);
   drawDataCenter(460,200,65);
+  
+  drawCloud(400,400);
 }
 
 void drawDataCenter(float x, float y, float s) { // s = size
@@ -157,6 +159,8 @@ void drawDigiPpl(float x, float y) {
   // Drawing person with local coords centered on head
   scale(0.8);
   fill(#FFC1C1);
+  rect(0,175,200,30,40);//right arm
+  rect(0,175,-200,30,40);// left arm
   rect(-15, 90, 20, 80, 20);  // Neck
   ellipse(0, 0, 170, 200);  // Head
   rect(-70,290, 50, 200, 40); //Left Leg
@@ -169,8 +173,27 @@ void drawDigiPpl(float x, float y) {
 void drawTube(float x, float y) {
   noStroke();
   pushMatrix();
-  translate(x,y);
+  translate(680,50);
   rect(x,y,30,180,20);
   rect(x,y,180,30,20);
+  popMatrix();
+}
+
+void drawCloud(float x, float y) {
+  stroke(0);
+  pushMatrix();
+  translate(400,400);
+  circle(0,0,20);
+  circle(-10,0,20);
+  circle(0,-10, 20);
+  circle(0,10,20);
+  circle(10,0,20);
+  circle(0,20, 20);
+  circle(0,5,20);
+  circle(-10,5,20);
+  circle(5,-10, 20);
+  circle(5,0,20);
+  circle(-5,0,20);
+  circle(0,-5, 20);
   popMatrix();
 }
